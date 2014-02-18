@@ -56,14 +56,14 @@ class HashMonad extends Monad {
 
 	public function getOrElse($key, $default = null) {
 		if (isset($this->_value[$key])) {
-			return new Maybe($key);
+			return new Maybe($this->_value[$key]);
 		}
 		return new Maybe($default);
 	}
 
 	public function getOrCall($key, callable $function) {
 		if (isset($this->_value[$key])) {
-			return new Maybe($key);
+			return new Maybe($this->_value[$key]);
 		}
 		return new Maybe($function());
 	}
@@ -73,7 +73,7 @@ class HashMonad extends Monad {
  */
 	public function getOrThrow($key, \Exception $ex) {
 		if (isset($this->_value[$key])) {
-			return new Maybe($key);
+			return new Maybe($this->_value[$key]);
 		}
 		throw $ex;
 	}
