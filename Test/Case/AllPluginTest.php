@@ -16,6 +16,7 @@ class AllPluginTest extends \PHPUnit_Framework_TestSuite {
 		$suite->addTestFile($path . 'AllComponentTest.php');
 		$suite->addTestFile($path . 'AllControllerTest.php');
 		$suite->addTestFile($path . 'AllLibTest.php');
+		$suite->addTestFile($path . 'AllViewTest.php');
 
 		return $suite;
 	}
