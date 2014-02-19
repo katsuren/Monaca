@@ -12,7 +12,7 @@ class Chain extends Maybe {
 
 	public function __set($name, $value) {
 		return $this->bind(function($obj) use($name, $value) {
-			$obj->name = $value;
+			$obj->$name = $value;
 			return $value;
 		});
 	}
