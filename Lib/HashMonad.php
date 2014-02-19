@@ -49,32 +49,4 @@ class HashMonad extends Monad {
 		}
 		return $ret;
 	}
-
-	public function get($key) {
-		return $this->getOrElse($key, null);
-	}
-
-	public function getOrElse($key, $default = null) {
-		if (isset($this->_value[$key])) {
-			return new Maybe($this->_value[$key]);
-		}
-		return new Maybe($default);
-	}
-
-	public function getOrCall($key, callable $function) {
-		if (isset($this->_value[$key])) {
-			return new Maybe($this->_value[$key]);
-		}
-		return new Maybe($function());
-	}
-
-/**
- * @throws \Exception
- */
-	public function getOrThrow($key, \Exception $ex) {
-		if (isset($this->_value[$key])) {
-			return new Maybe($this->_value[$key]);
-		}
-		throw $ex;
-	}
 }

@@ -1,5 +1,7 @@
 <?php
 
+App::uses('Hash', 'Utility');
+
 abstract class Monad {
 
 	//-------------------------------------------
@@ -46,6 +48,44 @@ abstract class Monad {
 			return $this::unit($this->_runCallback($function, $this->_value, $args));
 		}
 		throw new \BadMethodCallException('Call to undefined method ' . $name);
+	}
+
+	//-------------
+	// Optional
+	//-------------
+
+	public function get($key) {
+		return $this->getOrElse($key, null);
+	}
+
+	public function getOrElse($key = null, $default = null) {
+		$val = $this->extract();
+		if (is_null($key)) {
+			return is_null($val) ? $default : $val;
+		}
+		if (is_null($val)) {
+			return $default;
+		} elseif (!is_array($val)) {
+			return $val;
+		}
+		$ret = Hash::get($val, $key);
+		return is_null($ret) ? $default : $ret;
+	}
+
+	public function getOrCall($key, callable $function) {
+		$val = $this->getOrElse($key, null);
+		return is_null($val) ? $function() : $val;
+	}
+
+/**
+ * @throws \Exception
+ */
+	public function getOrThrow($key, \Exception $ex) {
+		$val = $this->getOrElse($key, null);
+		if (is_null($val)) {
+			throw $ex;
+		}
+		return $val;
 	}
 
 	//-------------------------------------------
