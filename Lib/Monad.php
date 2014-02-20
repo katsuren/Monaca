@@ -81,11 +81,9 @@ abstract class Monad {
  * @throws \Exception
  */
 	public function getOrThrow($key, \Exception $ex) {
-		$val = $this->getOrElse($key, null);
-		if (is_null($val)) {
+		return $this->getOrCall($key, function() use($ex) {
 			throw $ex;
-		}
-		return $val;
+		});
 	}
 
 	//-------------------------------------------

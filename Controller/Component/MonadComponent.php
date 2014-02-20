@@ -22,27 +22,22 @@ class MonadComponent extends Component {
 	}
 
 	public function getConfigOrElse($key, $default = null) {
-		if (Configure::check($key)) {
-			return Configure::read($key);
-		}
-		return $default;
+		return $this->getConfigOrCall($key, function() use($default) {
+			return $default;
+		});
 	}
 
 	public function getConfigOrCall($key, callable $function) {
-		if (Configure::check($key)) {
-			return Configure::read($key);
-		}
-		return $function();
+		return Configure::check($key) ? Configure::read($key) : $function();
 	}
 
 /**
  * @throws \Exception
  */
 	public function getConfigOrThrow($key, \Exception $ex) {
-		if (Configure::check($key)) {
-			return Configure::read($key);
-		}
-		throw $ex;
+		return $this->getConfigOrCall($key, function() use($ex) {
+			throw $ex;
+		});
 	}
 
 	//-----------
@@ -54,27 +49,22 @@ class MonadComponent extends Component {
 	}
 
 	public function getSessionOrElse($key, $default = null) {
-		if (CakeSession::check($key)) {
-			return CakeSession::read($key);
-		}
-		return $default;
+		return $this->getSessionOrCall($key, function() use($default) {
+			return $default;
+		});
 	}
 
 	public function getSessionOrCall($key, callable $function) {
-		if (CakeSession::check($key)) {
-			return CakeSession::read($key);
-		}
-		return $function();
+		return CakeSession::check($key) ? CakeSession::read($key) : $function();
 	}
 
 /**
  * @throws \Exception
  */
 	public function getSessionOrThrow($key, \Exception $ex) {
-		if (CakeSession::check($key)) {
-			return CakeSession::read($key);
-		}
-		throw $ex;
+		return $this->getSessionOrCall($key, function() use($ex) {
+			throw $ex;
+		});
 	}
 
 	//-----------
@@ -86,33 +76,23 @@ class MonadComponent extends Component {
 	}
 
 	public function getPostOrElse($key, $default = null) {
-		if ($key === null) {
-			return $_POST;
-		}
-		$ret = Hash::get($_POST, $key);
-		if ($ret !== null) {
-			return $ret;
-		}
-		return $default;
+		return $this->getPostOrCall($key, function() use($default) {
+			return $default;
+		});
 	}
 
 	public function getPostOrCall($key, callable $function) {
-		$ret = $this->getPostOrElse($key, null);
-		if ($ret !== null) {
-			return $ret;
-		}
-		return $function();
+		$ret = is_null($key) ? $_POST : Hash::get($_POST, $key);
+		return is_null($ret) ? $function() : $ret;
 	}
 
 /**
  * @throws \Exception
  */
 	public function getPostOrThrow($key, \Exception $ex) {
-		$ret = $this->getPostOrElse($key, null);
-		if ($ret !== null) {
-			return $ret;
-		}
-		throw $ex;
+		return $this->getPostOrCall($key, function() use($ex) {
+			throw $ex;
+		});
 	}
 
 	//-----------
@@ -124,33 +104,23 @@ class MonadComponent extends Component {
 	}
 
 	public function getQueryOrElse($key, $default = null) {
-		if ($key === null) {
-			return $_GET;
-		}
-		$ret = Hash::get($_GET, $key);
-		if ($ret !== null) {
-			return $ret;
-		}
-		return $default;
+		return $this->getQueryOrCall($key, function() use($default) {
+			return $default;
+		});
 	}
 
 	public function getQueryOrCall($key, callable $function) {
-		$ret = $this->getQueryOrElse($key, null);
-		if ($ret !== null) {
-			return $ret;
-		}
-		return $function();
+		$ret = is_null($key) ? $_GET : Hash::get($_GET, $key);
+		return is_null($ret) ? $function() : $ret;
 	}
 
 /**
  * @throws \Exception
  */
 	public function getQueryOrThrow($key, \Exception $ex) {
-		$ret = $this->getQueryOrElse($key, null);
-		if ($ret !== null) {
-			return $ret;
-		}
-		throw $ex;
+		return $this->getQueryOrCall($key, function() use($ex) {
+			throw $ex;
+		});
 	}
 
 	//-----------
