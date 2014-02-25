@@ -2,7 +2,7 @@
 
 App::uses('Component', 'Controller');
 App::uses('CakeSession', 'Model/Datasource');
-App::uses('Maybe', 'Monaca.Lib');
+App::uses('Monaca', 'Monaca.Lib');
 App::uses('Hash', 'Utility');
 
 class MonadComponent extends Component {
@@ -18,26 +18,22 @@ class MonadComponent extends Component {
 	//-----------
 
 	public function getConfig($key) {
-		return $this->getConfigOrElse($key, null);
+		return Monaca::getConfig($key);
 	}
 
 	public function getConfigOrElse($key, $default = null) {
-		return $this->getConfigOrCall($key, function() use($default) {
-			return $default;
-		});
+		return Monaca::getConfigOrElse($key, $default);
 	}
 
 	public function getConfigOrCall($key, callable $function) {
-		return Configure::check($key) ? Configure::read($key) : $function();
+		return Monaca::getConfigOrCall($key, $function);
 	}
 
 /**
  * @throws \Exception
  */
 	public function getConfigOrThrow($key, \Exception $ex) {
-		return $this->getConfigOrCall($key, function() use($ex) {
-			throw $ex;
-		});
+		return Monaca::getConfigOrThrow($key, $ex);
 	}
 
 	//-----------
@@ -45,26 +41,22 @@ class MonadComponent extends Component {
 	//-----------
 
 	public function getSession($key) {
-		return $this->getSessionOrElse($key, null);
+		return Monaca::getSession($key);
 	}
 
 	public function getSessionOrElse($key, $default = null) {
-		return $this->getSessionOrCall($key, function() use($default) {
-			return $default;
-		});
+		return Monaca::getSessionOrElse($key, $default);
 	}
 
 	public function getSessionOrCall($key, callable $function) {
-		return CakeSession::check($key) ? CakeSession::read($key) : $function();
+		return Monaca::getSessionOrCall($key, $function);
 	}
 
 /**
  * @throws \Exception
  */
 	public function getSessionOrThrow($key, \Exception $ex) {
-		return $this->getSessionOrCall($key, function() use($ex) {
-			throw $ex;
-		});
+		return Monaca::getSessionOrThrow($key, $ex);
 	}
 
 	//-----------
