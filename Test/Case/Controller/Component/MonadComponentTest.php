@@ -94,6 +94,8 @@ class MonadComponentTest extends CakeTestCase {
  * If you need testing this function, you should include --stderr flag.
  * more detail,
  * see http://book.cakephp.org/2.0/en/development/testing.html#running-tests-that-use-sessions
+ *
+ * @group session
  */
 	public function testGetSessionFunctions() {
 		CakeSession::write('key', 100);
