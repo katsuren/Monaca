@@ -5,6 +5,10 @@ App::uses('CakeSession', 'Model/Datasource');
 App::uses('Monaca', 'Monaca.Lib');
 App::uses('Hash', 'Utility');
 
+/**
+ * @package Monaca
+ * @subpackage Controller.Component
+ */
 class MonadComponent extends Component {
 
 	//-----------------------------

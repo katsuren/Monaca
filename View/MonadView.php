@@ -4,6 +4,10 @@ App::uses('View', 'View');
 App::uses('Maybe', 'Monaca.Lib');
 App::uses('Hash', 'Utility');
 
+/**
+ * @package Monaca
+ * @subpackage View
+ */
 class MonadView extends View {
 
 	public function getOrElse($var, $default = null) {

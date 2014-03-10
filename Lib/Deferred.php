@@ -2,6 +2,10 @@
 
 App::uses('Promise', 'Monaca.Lib');
 
+/**
+ * @package Monaca
+ * @subpackage Lib
+ */
 class Deferred extends Promise {
 
 	public function succeed($value) {

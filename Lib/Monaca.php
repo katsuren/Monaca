@@ -3,6 +3,10 @@
 App::uses('CakeSession', 'Model/Datasource');
 App::uses('Hash', 'Utility');
 
+/**
+ * @package Monaca
+ * @subpackage Lib
+ */
 class Monaca {
 
 	//-----------------------------

@@ -2,6 +2,10 @@
 
 App::uses('Hash', 'Utility');
 
+/**
+ * @package Monaca
+ * @package Lib
+ */
 abstract class Monad {
 
 	//-------------------------------------------

@@ -4,6 +4,10 @@ App::uses('Controller', 'Controller');
 App::uses('MonadComponent', 'Monaca.Controller/Component');
 App::uses('MonadView', 'Monaca.View');
 
+/**
+ * @package Monaca
+ * @subpackage Controller
+ */
 class MonadController extends Controller {
 
 	//--------------------------------------

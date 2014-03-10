@@ -2,6 +2,10 @@
 
 App::uses('Monad', 'Monaca.Lib');
 
+/**
+ * @package Monaca
+ * @package Lib
+ */
 class Promise extends Monad {
 
 	//----------------------------

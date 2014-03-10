@@ -3,6 +3,10 @@
 App::uses('Monad', 'Monaca.Lib');
 App::uses('Maybe', 'Monaca.Lib');
 
+/**
+ * @package Monaca
+ * @subpackage Lib
+ */
 class HashMonad extends Monad {
 
 	//-----------------------------

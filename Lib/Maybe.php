@@ -2,6 +2,10 @@
 
 App::uses('Monad', 'Monaca.Lib');
 
+/**
+ * @package Monaca
+ * @subpackage Lib
+ */
 class Maybe extends Monad {
 
 	//------------------------------------
