@@ -5,8 +5,7 @@ App::uses('Maybe', 'Monaca.Lib');
 App::uses('Hash', 'Utility');
 
 /**
- * @package Monaca
- * @subpackage View
+ * @package Monaca.View
  */
 class MonadView extends View {
 

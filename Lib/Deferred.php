@@ -3,8 +3,7 @@
 App::uses('Promise', 'Monaca.Lib');
 
 /**
- * @package Monaca
- * @subpackage Lib
+ * @package Monaca.Lib
  */
 class Deferred extends Promise {
 

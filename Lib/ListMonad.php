@@ -3,8 +3,7 @@
 App::uses('Monad', 'Monaca.Lib');
 
 /**
- * @package Monaca
- * @subpackage Lib
+ * @package Monaca.Lib
  */
 class ListMonad extends Monad {
 

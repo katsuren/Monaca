@@ -3,8 +3,7 @@
 App::uses('Hash', 'Utility');
 
 /**
- * @package Monaca
- * @package Lib
+ * @package Monaca.Lib
  */
 abstract class Monad {
 

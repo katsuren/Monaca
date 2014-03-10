@@ -4,8 +4,7 @@ App::uses('CakeSession', 'Model/Datasource');
 App::uses('Hash', 'Utility');
 
 /**
- * @package Monaca
- * @subpackage Lib
+ * @package Monaca.Lib
  */
 class Monaca {
 

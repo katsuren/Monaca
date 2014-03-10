@@ -6,8 +6,7 @@ App::uses('Monaca', 'Monaca.Lib');
 App::uses('Hash', 'Utility');
 
 /**
- * @package Monaca
- * @subpackage Controller.Component
+ * @package Monaca.Controller.Component
  */
 class MonadComponent extends Component {
 
