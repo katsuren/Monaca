@@ -2,6 +2,8 @@
 
 \App::uses('Controller', 'Controller');
 
-class AppController extends \Controller
-{
+if (!class_exists('AppController')) {
+    class AppController extends \Controller
+    {
+    }
 }
