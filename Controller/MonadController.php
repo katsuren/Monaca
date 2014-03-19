@@ -1,13 +1,13 @@
 <?php
 
-App::uses('Controller', 'Controller');
+App::uses('Controller', 'AppController');
 App::uses('MonadComponent', 'Monaca.Controller/Component');
 App::uses('MonadView', 'Monaca.View');
 
 /**
  * @package Monaca.Controller
  */
-class MonadController extends Controller {
+class MonadController extends AppController {
 
 	//--------------------------------------
 	//
