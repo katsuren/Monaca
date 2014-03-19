@@ -1,5 +1,7 @@
 <?php
 
+require_once dirname(dirname(__FILE__)) . DS . 'controllers.php';
+
 App::uses('CakeRequest', 'Network');
 App::uses('CakeResponse', 'Network');
 App::uses('ComponentCollection', 'Controller');

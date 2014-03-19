@@ -1,5 +1,7 @@
 <?php
 
+require_once dirname(__FILE__) . DS . 'controllers.php';
+
 App::uses('MonadController', 'Monaca.Controller');
 App::uses('MonadComponent', 'Monaca.Controller/Component');
 
